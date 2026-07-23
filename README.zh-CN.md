@@ -20,6 +20,18 @@ brew tap JNHFlow21/tap && brew trust --tap JNHFlow21/tap && brew install --cask 
 - App 所需的 `agent-switch` CLI 和配套 MCP Server 命令；
 - 由同一个 Tap 管理的后续升级。
 
+预期结果：
+
+```bash
+agent-switch --version
+open -a "Agent Switch"
+```
+
+CLI 会输出 `agent-switch 0.2.0`，原生 App 会从
+`/Applications/Agent Switch.app` 打开。
+
+## 安全说明
+
 > [!WARNING]
 > Agent Switch 当前使用 ad-hoc 签名，尚未经过 Apple 公证。主要的 Alpha
 > Cask 会在安装完成后移除 Gatekeeper quarantine。安装前请先检查
@@ -47,7 +59,17 @@ brew uninstall agent-switch-cli
 | `agent-switch` | Cask | 原生 macOS App |
 | `agent-switch-cli` | Formula | App 运行所需的 CLI 后端 |
 
-问题请提交到 [Agent Switch Issues][issues]。
+## 文档
+
+首次运行、MCP 和凭据工作流见 [Agent Switch README][source]。
+
+## 支持
+
+可复现的问题请提交到 [Agent Switch Issues][issues]。
+
+## 许可证
+
+[MIT](LICENSE) © 2026 JNHFlow21
 
 [source]: https://github.com/JNHFlow21/agent-switch
 [release]: https://github.com/JNHFlow21/agent-switch/releases/tag/v0.2.0
