@@ -44,3 +44,20 @@ jobs:
             | grep arm64
           lipo -archs "/Applications/Agent Switch.app/Contents/MacOS/Agent Switch" \
             | grep x86_64
+
+  public-install:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: macos-14
+    steps:
+      - name: Run the public README install command
+        run: brew tap JNHFlow21/tap && brew trust --tap JNHFlow21/tap && brew install --cask JNHFlow21/tap/agent-switch
+
+      - name: Verify the public installation
+        run: |
+          agent-switch --version
+          test -d "/Applications/Agent Switch.app"
+          if xattr -p com.apple.quarantine "/Applications/Agent Switch.app"; then
+            echo "Gatekeeper quarantine was not removed" >&2
+            exit 1
+          fi
+          codesign --verify --deep --strict --verbose=2 "/Applications/Agent Switch.app"
