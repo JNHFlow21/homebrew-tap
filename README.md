@@ -20,6 +20,18 @@ This installs:
 - the `agent-switch` CLI and its bundled MCP server commands;
 - Homebrew-managed updates through the same Tap.
 
+Expected result:
+
+```bash
+agent-switch --version
+open -a "Agent Switch"
+```
+
+The CLI prints `agent-switch 0.2.0`, and the native app opens from
+`/Applications/Agent Switch.app`.
+
+## Security
+
 > [!WARNING]
 > Agent Switch is currently ad-hoc signed and not Apple-notarized. The primary
 > Alpha Cask deliberately removes Gatekeeper quarantine after installation.
@@ -49,7 +61,18 @@ MCP definitions and credentials.
 | `agent-switch` | Cask | Native macOS application |
 | `agent-switch-cli` | Formula | CLI backend required by the application |
 
-Issues belong in the [Agent Switch issue tracker][issues].
+## Documentation
+
+See the [Agent Switch README][source] for the first-run MCP and credential
+workflow.
+
+## Support
+
+Report reproducible problems in the [Agent Switch issue tracker][issues].
+
+## License
+
+[MIT](LICENSE) © 2026 JNHFlow21
 
 [source]: https://github.com/JNHFlow21/agent-switch
 [release]: https://github.com/JNHFlow21/agent-switch/releases/tag/v0.2.0
