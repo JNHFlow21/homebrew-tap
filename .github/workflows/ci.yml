@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Register and trust the checked-out tap
+        run: |
+          brew tap JNHFlow21/tap "$GITHUB_WORKSPACE"
+          brew trust --tap JNHFlow21/tap
+
+      - name: Audit Formula and Cask
+        run: |
+          brew style JNHFlow21/tap
+          brew audit --strict JNHFlow21/tap/agent-switch-cli
+          brew audit --cask --strict JNHFlow21/tap/agent-switch
+
+      - name: Install and test CLI
+        run: |
+          brew install JNHFlow21/tap/agent-switch-cli
+          brew test JNHFlow21/tap/agent-switch-cli
+          agent-switch --version
+
+      - name: Install and validate macOS app
+        run: |
+          brew install --cask JNHFlow21/tap/agent-switch
+          test -d "/Applications/Agent Switch.app"
+          if xattr -p com.apple.quarantine "/Applications/Agent Switch.app"; then
+            echo "Gatekeeper quarantine was not removed" >&2
+            exit 1
+          fi
+          codesign --verify --deep --strict --verbose=2 "/Applications/Agent Switch.app"
+          lipo -archs "/Applications/Agent Switch.app/Contents/MacOS/Agent Switch" \
+            | grep arm64
+          lipo -archs "/Applications/Agent Switch.app/Contents/MacOS/Agent Switch" \
+            | grep x86_64
