@@ -1,6 +1,6 @@
 cask "agent-switch" do
-  version "0.2.0"
-  sha256 "b1bc3f7f019e9f59acb54b5a51e042e8b8c2b4edba489844993e09396b0a8c9a"
+  version "0.3.0"
+  sha256 "ff401ebbdb8e72a3320a0531f72a87c9d126847de55dbe29925c0f05bfe4d030"
 
   url "https://github.com/JNHFlow21/agent-switch/releases/download/v#{version}/Agent-Switch-#{version}-macos-universal.zip"
   name "Agent Switch"
