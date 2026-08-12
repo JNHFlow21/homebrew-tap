@@ -27,7 +27,7 @@ agent-switch --version
 open -a "Agent Switch"
 ```
 
-CLI 会输出 `agent-switch 0.2.0`，原生 App 会从
+CLI 会输出 `agent-switch 0.3.0`，原生 App 会从
 `/Applications/Agent Switch.app` 打开。
 
 ## 安全说明
@@ -72,5 +72,5 @@ brew uninstall agent-switch-cli
 [MIT](LICENSE) © 2026 JNHFlow21
 
 [source]: https://github.com/JNHFlow21/agent-switch
-[release]: https://github.com/JNHFlow21/agent-switch/releases/tag/v0.2.0
+[release]: https://github.com/JNHFlow21/agent-switch/releases/tag/v0.3.0
 [issues]: https://github.com/JNHFlow21/agent-switch/issues

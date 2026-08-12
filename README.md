@@ -27,7 +27,7 @@ agent-switch --version
 open -a "Agent Switch"
 ```
 
-The CLI prints `agent-switch 0.2.0`, and the native app opens from
+The CLI prints `agent-switch 0.3.0`, and the native app opens from
 `/Applications/Agent Switch.app`.
 
 ## Security
@@ -75,5 +75,5 @@ Report reproducible problems in the [Agent Switch issue tracker][issues].
 [MIT](LICENSE) © 2026 JNHFlow21
 
 [source]: https://github.com/JNHFlow21/agent-switch
-[release]: https://github.com/JNHFlow21/agent-switch/releases/tag/v0.2.0
+[release]: https://github.com/JNHFlow21/agent-switch/releases/tag/v0.3.0
 [issues]: https://github.com/JNHFlow21/agent-switch/issues
